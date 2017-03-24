@@ -1,6 +1,6 @@
 {
   "name": "ember-data-mirage",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Automatically create Mirage models based Ember Data models",
   "keywords": [
     "ember-addon"

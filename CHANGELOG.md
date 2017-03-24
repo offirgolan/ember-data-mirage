@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## 0.2.0
+
+Remove Factory creation support
+
 ## 0.1.0
 
 Initial release.
