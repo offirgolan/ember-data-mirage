@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import requireModule from 'ember-require-module';
 import config from 'ember-get-config';
-import options from 'ember-data-mirage/-private/options';
-import { Model, Factory, belongsTo, hasMany, association } from 'ember-cli-mirage';
+import { Model, belongsTo, hasMany } from 'ember-cli-mirage';
 
 const {
   canInvoke,
@@ -16,7 +15,6 @@ const {
 // Caches
 let DsModels;
 let Models;
-let Factories;
 
 // Rudimentary DS.Model check
 function isDsModel(model) {
@@ -86,35 +84,4 @@ export function getModels() {
   });
 
   return Models;
-}
-
-/**
- * Get all mirage factories for each of the ember data models
- *
- * @method getFactories
- * @private
- * @return {Object} factories
- */
-export function getFactories() {
-  if (Factories) {
-    return Factories;
-  }
-
-  let models = getDsModels();
-  Factories = {};
-
-  Object.keys(models).forEach(modelName => {
-    let model = models[modelName];
-    let attrs = {};
-
-    model.eachRelationship((name, r) => {
-      if (options.Factory.associateBelongsTo && r.kind === 'belongsTo') {
-        attrs[name] = association();
-      }
-    });
-
-    Factories[modelName] = Factory.extend(attrs);
-  });
-
-  return Factories;
 }

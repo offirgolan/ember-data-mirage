@@ -4,13 +4,13 @@
 [![Build Status](https://travis-ci.org/offirgolan/ember-data-mirage.svg)](https://travis-ci.org/offirgolan/ember-data-mirage)
 [![npm version](https://badge.fury.io/js/ember-data-mirage.svg)](http://badge.fury.io/js/ember-data-mirage)
 
-Automatically create Mirage models and factories based on the app's Ember Data models
+Automatically create Mirage models based on the app's Ember Data models
 
 ## Features
 
-- Automatically create mirage models and factories based off of your ember data models
-- Models and Factories will include the appropriate relationships and associations
-- Easily build on top of the pre created models and factories
+- Automatically create mirage models based off of your ember data models
+- Models will include the appropriate relationships and associations
+- Easily build on top of the pre created models
 
 ## Installation
 
@@ -27,17 +27,16 @@ If it is a bug [please open an issue on GitHub](http://github.com/offirgolan/emb
 
 ## Usage
 
-### Register the Models and Factories
+### Register the Models
 
 In your `mirage/config.js` add the following two line to the top:
 
 ```js
-import { registerModels, registerFactories } from 'ember-data-mirage';
+import { registerModels } from 'ember-data-mirage';
 
 export default function() {
-  // Register Models & Factories
+  // Register Models
   registerModels(this);
-  registerFactories(this);
 
   // Everything else goes here
   this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
@@ -58,36 +57,4 @@ import { modelFor } from 'ember-data-mirage';
 export default modelFor('foo').extend({
   bar: belongsTo('foo')
 });
-```
-
-### Extending a Factory
-
-You can extend a pre created factory via the following syntax
-
-```js
-// mirage/factories/foo.js
-
-import { factoryFor } from 'ember-data-mirage';
-
-export default factoryFor('foo').extend({
-  bar: association()
-});
-```
-
-## Options
-
-In your app's `config/environment.js` file, you can specifcy some options via the following object
-
-```js
-ENV['ember-data-mirage'] = {
-  Model: {
-    // No options yet
-  }
-  Factory: {
-    // There are many time where factory associations may cause some issues
-    // Set this to false to not have them be automatically Set
-    // Default: true
-    associateBelongsTo: false
-  }
-};
 ```
