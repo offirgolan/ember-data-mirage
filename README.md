@@ -1,5 +1,6 @@
 # Ember Data Mirage
 
+[![ember-cli-mirage](https://embadge.io/v1/badge.svg?start=0.3.0&label=ember-cli-mirage)](https://embadge.io/v1/badge.svg?start=0.3.0&label=ember-cli-mirage)
 [![Build Status](https://travis-ci.org/offirgolan/ember-data-mirage.svg)](https://travis-ci.org/offirgolan/ember-data-mirage)
 [![npm version](https://badge.fury.io/js/ember-data-mirage.svg)](http://badge.fury.io/js/ember-data-mirage)
 
