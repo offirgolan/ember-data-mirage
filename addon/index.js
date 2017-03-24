@@ -1,24 +1,11 @@
 import Ember from 'ember';
-import config from 'ember-get-config';
+import shouldRegister from 'ember-data-mirage/utils/should-register';
 import { getModels, getFactories } from 'ember-data-mirage/-private/resources';
 
 const {
   assert,
   isPresent,
-  A: emberArray
 } = Ember;
-
-const {
-  modulePrefix
-} = config;
-
-function shouldRegister(type, name) {
-  let moduleMap = self.requirejs.entries;
-  let matchRegex = new RegExp(`${modulePrefix}/mirage/${type}/${name}`, 'i');
-
-  return !isPresent(emberArray(Object.keys(moduleMap))
-    .find((module) => isPresent(module.match(matchRegex))));
-}
 
 function registerModels(server) {
   let models = getModels();

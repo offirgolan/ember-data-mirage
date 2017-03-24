@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import requireModule from 'ember-require-module';
 import config from 'ember-get-config';
+import options from 'ember-data-mirage/-private/options';
 import { Model, Factory, belongsTo, hasMany, association } from 'ember-cli-mirage';
 
 const {
-  assign,
   canInvoke,
   isPresent,
 } = Ember;
@@ -13,21 +13,23 @@ const {
   modulePrefix
 } = config;
 
-const options = assign({
-  Model: {},
-  Factory: {
-     associateBelongsTo: true
-   }
-}, config['ember-data-mirage'] || {});
-
+// Caches
 let DsModels;
 let Models;
 let Factories;
 
+// Rudimentary DS.Model check
 function isDsModel(model) {
   return model && canInvoke(model, 'eachRelationship');
 }
 
+/**
+ * Get all ember data models under the app's namespaces
+ *
+ * @method getDsModels
+ * @private
+ * @return {Object} models
+ */
 export function getDsModels() {
   if (DsModels) {
     return DsModels;
@@ -53,6 +55,13 @@ export function getDsModels() {
     return DsModels;
 }
 
+/**
+ * Get all mirage models for each of the ember-data models
+ *
+ * @method getModels
+ * @private
+ * @return {Object} models
+ */
 export function getModels() {
   if (Models) {
     return Models;
@@ -79,6 +88,13 @@ export function getModels() {
   return Models;
 }
 
+/**
+ * Get all mirage factories for each of the ember data models
+ *
+ * @method getFactories
+ * @private
+ * @return {Object} factories
+ */
 export function getFactories() {
   if (Factories) {
     return Factories;
