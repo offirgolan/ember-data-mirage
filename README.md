@@ -1,3 +1,7 @@
+# ⚠️ DEPRECATED ⚠️
+
+This addon is no longer being developed since it has been merged with Ember CLI Mirage in [v0.3.2](http://www.ember-cli-mirage.com/blog/#auto-discovery-of-ember-data-models).
+
 # Ember Data Mirage
 
 [![ember-cli-mirage](https://embadge.io/v1/badge.svg?start=0.3.0&label=ember-cli-mirage)](https://embadge.io/v1/badge.svg?start=0.3.0&label=ember-cli-mirage)
